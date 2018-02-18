@@ -7,8 +7,8 @@ patroni::postgres_superuser: postgres
 patroni::postgres_superpass: postpass
 patroni::postgres_bindir: /usr/pgsql-9.6/bin
 patroni::postgres_datadir: /var/lib/pgsql/9.6/data
-patroni::replication_user: replication
-patroni::replication_pass: replpass
+patroni::postgres_replication_user: replication
+patroni::postgres_replication_pass: replpass
 patroni::scope: postgres
 patroni::config_file: /etc/patroni/patroni.yaml
 patroni::config_datastore: consul

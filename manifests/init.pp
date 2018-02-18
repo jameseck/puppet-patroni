@@ -33,8 +33,8 @@ class patroni (
   String $postgres_replication_user,
   String $postgres_replication_pass,
   String $scope,
-  Stdlib::Absolutepath $psotgres_bindir,
-  Stdlib::Absolutepath $psotgres_datadir,
+  Stdlib::Absolutepath $postgres_bindir,
+  Stdlib::Absolutepath $postgres_datadir,
   Enum['consul', 'etcd'] $config_datastore,
   String $config_datastore_host,
 ) {

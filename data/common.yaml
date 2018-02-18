@@ -50,8 +50,8 @@ patroni::config_hash:
     pgpass: /var/lib/pgsql/.pgpass0
     authentication:
       replication:
-        username: "%{alias('patroni::replication_user')}"
-        password: "%{alias('patroni::replication_pass')}"
+        username: "%{alias('patroni::postgres_replication_user')}"
+        password: "%{alias('patroni::postgres_replication_pass')}"
       superuser:
         username: "%{alias('patroni::postgres_superuser')}"
         password: "%{alias('patroni::postgres_superpass')}"

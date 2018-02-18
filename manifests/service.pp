@@ -9,7 +9,7 @@ class patroni::service {
     mode    => '0644',
     content => template('patroni/patroni.service.erb'),
   }
-  ~> exec { 'systemctl daemon-reload':
+  ~> exec { '/bin/systemctl daemon-reload':
     refreshonly => true,
   }
   -> service { 'patroni':

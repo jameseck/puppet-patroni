@@ -2,7 +2,7 @@
 # This class handles patroni installation.
 class patroni::install {
 
-  # install python pip and install patroni python module
+  # install python pip and install patroni python modules
   include python
 
   python::pip { 'patroni': }

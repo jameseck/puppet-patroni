@@ -1,3 +1,5 @@
+# @api_private
+# This class handles patroni service.
 class patroni::service {
 
   file { '/lib/systemd/system/patroni.service':

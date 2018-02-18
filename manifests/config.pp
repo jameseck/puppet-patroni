@@ -1,3 +1,5 @@
+# @api_private
+# This class handles patroni config.
 class patroni::config {
 
   file { '/etc/patroni':

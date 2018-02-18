@@ -9,7 +9,11 @@ class patroni::config {
     mode   => '0700',
   }
 
-  $_config_hash = $patroni::config_hash
+  if ( $patroni::config_merge ) {
+    $_config_hash = lookup('patroni::config_hash', { merge => { 'strategy' => 'deep'} } )
+  } else {
+    $_config_hash = lookup('patroni::config_hash')
+  }
 
   file { $patroni::config_file:
     ensure  => 'file',

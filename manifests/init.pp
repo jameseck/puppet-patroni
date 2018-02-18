@@ -23,6 +23,7 @@
 
 class patroni (
   Hash $config_hash,
+  Boolean $config_merge,
   Stdlib::Absolutepath $config_file,
   Boolean $service_enable,
   Enum['running', 'stopped'] $service_ensure,

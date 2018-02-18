@@ -1,4 +1,5 @@
 ---
+patroni::config_merge: true
 patroni::service_enable: true
 patroni::service_ensure: running
 patroni::postgres_user: postgres

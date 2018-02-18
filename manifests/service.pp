@@ -1,4 +1,4 @@
-class patoni::service {
+class patroni::service {
 
   service { 'patroni':
     ensure => $patroni::service_ensure,

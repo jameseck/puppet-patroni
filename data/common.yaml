@@ -44,17 +44,17 @@ patroni::config_hash:
   postgresql:
     listen: 0.0.0.0:5432
     connect_address: "%{networking.ip}:5432"
-    data_dir: "%{alias('patroni::postgres_datadir'}"
-    bin_dir: "%{alias('patroni::postgres_bindir'}"
+    data_dir: "%{alias('patroni::postgres_datadir')}"
+    bin_dir: "%{alias('patroni::postgres_bindir')}"
   #  config_dir:
     pgpass: /var/lib/pgsql/.pgpass0
     authentication:
       replication:
-        username: "%{alias('patroni::replication_user'}"
-        password: "%{alias('patroni::replication_pass'}"
+        username: "%{alias('patroni::replication_user')}"
+        password: "%{alias('patroni::replication_pass')}"
       superuser:
-        username: "%{alias('patroni::postgres_superuser'}"
-        password: "%{alias('patroni::postgres_superpass'}"
+        username: "%{alias('patroni::postgres_superuser')}"
+        password: "%{alias('patroni::postgres_superpass')}"
     parameters:
       unix_socket_directories: '/var/run/postgresql,/tmp'
   #watchdog:

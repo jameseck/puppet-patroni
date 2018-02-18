@@ -1,0 +1,68 @@
+---
+patroni::service_enable: true
+patroni::service_ensure: running
+patroni::postgres_user: postgres
+patroni::postgres_group: postgres
+patroni::postgres_superuser: postgres
+patroni::postgres_superpass: postpass
+patroni::postgres_bindir: /usr/pgsql-9.6/bin
+patroni::postgres_datadir: /var/lib/pgsql/9.6/data
+patroni::replication_user: replication
+patroni::replication_pass: replpass
+patroni::scope: postgres
+patroni::config_file: /etc/patroni/patroni.yaml
+patroni::config_datastore: consul
+patroni::config_datastore_host: consul
+patroni::config_hash:
+  scope: "%{alias('patroni::scope')}"
+  name: "%{hostname}"
+
+  restapi:
+    listen: "%{networking.ip}:8008"
+    connect_address: "%{@networking.ip}:8008"
+
+  consul:
+    host: "%{alias('patroni::config_datastore_host')}"
+
+  bootstrap:
+    dcs:
+      ttl: 30
+      loop_wait: 10
+      retry_timeout: 10
+      maximum_lag_on_failover: 1048576
+      postgresql:
+        use_pg_rewind: true
+        parameters: {}
+    initdb:  # Note: It needs to be a list (some options need values, others are switches)
+    - encoding: UTF8
+    - data-checksums
+
+    pg_hba:  # Add following lines to pg_hba.conf after running 'initdb'
+    - host replication replication 127.0.0.1/32 md5
+    - host all all 0.0.0.0/0 md5
+
+  postgresql:
+    listen: 0.0.0.0:5432
+    connect_address: "%{networking.ip}:5432"
+    data_dir: "%{alias('patroni::postgres_datadir'}"
+    bin_dir: "%{alias('patroni::postgres_bindir'}"
+  #  config_dir:
+    pgpass: /var/lib/pgsql/.pgpass0
+    authentication:
+      replication:
+        username: "%{alias('patroni::replication_user'}"
+        password: "%{alias('patroni::replication_pass'}"
+      superuser:
+        username: "%{alias('patroni::postgres_superuser'}"
+        password: "%{alias('patroni::postgres_superpass'}"
+    parameters:
+      unix_socket_directories: '/var/run/postgresql,/tmp'
+  #watchdog:
+  #  mode: automatic # Allowed values: off, automatic, required
+  #  device: /dev/watchdog
+  #  safety_margin: 5
+  tags:
+      nofailover: false
+      noloadbalance: false
+      clonefrom: false
+      nosync: false

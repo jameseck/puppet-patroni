@@ -1,0 +1,39 @@
+{
+  "name": "jameseck-patroni",
+  "version": "0.0.1",
+  "author": "James Eckersall",
+  "summary": "Installs, configures, and manages Patroni.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/jameseck/puppet-patroni",
+  "project_page": "https://github.com/jameseck/puppet-patroni",
+  "issues_url": "https://github.com/jameseck/puppet-patroni/issues",
+  "dependencies": [
+    { "name":"stankevich/python" },
+    { "name":"puppetlabs/stdlib" }
+  ],
+  "data_provider": "hiera",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.5.0 < 6.0.0"
+    }
+  ],
+  "

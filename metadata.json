@@ -1,5 +1,5 @@
 {
-  "name": "jameseck-patroni",
+  "name": "patroni",
   "version": "0.0.1",
   "author": "James Eckersall",
   "summary": "Installs, configures, and manages Patroni.",

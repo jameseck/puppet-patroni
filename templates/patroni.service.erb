@@ -5,14 +5,14 @@ After=syslog.target network.target
 [Service]
 Type=simple
 
-User=<%= @postgres_user %>
-Group=<%= @postgres_group %>
+User=<%= @patroni::postgres_user %>
+Group=<%= @patroni::postgres_group %>
 
 # Where to send early-startup messages from the server
 # This is normally controlled by the global default set by systemd
 # StandardOutput=syslog
 
-ExecStart=/bin/patroni <%= @config_file %>
+ExecStart=/bin/patroni <%= @patroni::config_file %>
 
 # only kill the patroni process, not it's children, so it will gracefully stop postgres
 KillMode=process

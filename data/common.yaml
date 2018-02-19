@@ -19,7 +19,7 @@ patroni::config_hash:
   name: "%{hostname}"
 
   restapi:
-    listen: "%{networking.ip}:8008"
+    listen: "0.0.0.0:8008"
     connect_address: "%{networking.ip}:8008"
 
   consul:

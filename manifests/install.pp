@@ -5,6 +5,7 @@ class patroni::install {
   # install python pip and install patroni python modules
   include python
 
+  python::pip { 'psycopg2-binary': }
   python::pip { 'patroni': }
   python::pip { "patroni[${patroni::config_datastore}]": }
 

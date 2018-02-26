@@ -6,7 +6,6 @@ class patroni::install {
   include python
 
   python::pip { 'psycopg2-binary': }
-  python::pip { 'patroni': }
   python::pip { 'patroni':
     install_args => $patroni::config_datastore,
   }

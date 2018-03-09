@@ -41,5 +41,6 @@ class patroni::config {
     group   => 'root',
     mode    => '0600',
     content => "{dcs_api: '${patroni::config_datastore}://${patroni::config_datastore_host}', namespace: /service/}",
+  }
 
 }

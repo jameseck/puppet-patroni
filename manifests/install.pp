@@ -8,9 +8,9 @@ class patroni::install {
   python::pip { 'psycopg2-binary':
     path => "${patroni::postgres_bindir}:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin",
   }
-  -> python::pip { 'patroni':
-    install_args => "--install-option=\"${patroni::config_datastore}\"",
-    path         => "${patroni::postgres_bindir}:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin",
+  -> python::pip { "patroni[${patroni::config_datastore}]":
+    pkgname => 'patroni',
+    path    => "${patroni::postgres_bindir}:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin",
   }
 
 }

@@ -6,7 +6,7 @@ class patroni::install {
   include python
 
   python::pip { 'psycopg2-binary':
-    environment => 'PATH=/usr/pgsql-9.6/bin:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin',
+    environment => "PATH=${patroni::postgres_bindir}:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin",
   }
   -> python::pip { 'patroni':
     install_args => "--install-option=\"${patroni::config_datastore}\"",

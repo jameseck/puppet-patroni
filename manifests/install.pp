@@ -10,6 +10,7 @@ class patroni::install {
   }
   -> python::pip { 'patroni':
     install_args => "--install-option=\"${patroni::config_datastore}\"",
+    path         => "${patroni::postgres_bindir}:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin",
   }
 
 }
